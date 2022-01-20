@@ -1,0 +1,26 @@
+name: DOCKER IMAGE UPDATE
+on: 
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps: 
+    - uses: actions/checkout@v2
+    - name: RUN A ONE LINE SCRIPT
+      run: echo HELLO, ILIYAS!
+    - name: docker login
+      env:
+        DOCKER_USER: ${{ secrets.DOCKER_USER}}
+        DOCKER-PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+      run: |
+        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+  
+    - name: docker build
+      run: |
+        docker build ./DOCKER1 -t iliyas01/iliyas01-helloworld
+    
+       
+    
