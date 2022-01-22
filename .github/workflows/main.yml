@@ -1,0 +1,26 @@
+name: DOCKER IMAGE UPDATE
+on: 
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps: 
+    - uses: actions/checkout@v2
+    - name: RUN A ONE LINE SCRIPT
+      run: echo HELLO, ILIYAS!
+    -
+        name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with: 
+          DOCKER_USER: ${{ secrets.DOCKER_USER}}
+          DOCKER-PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+     
+  
+    - name: docker build
+      run: |
+        docker build ./DOCKER1 -t docker1_web
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
