@@ -5,4 +5,10 @@ services:
     build: .
     image: iliyas01/iliyas01-helloworld
   database:
-    image: redis
+    image: postgres:alpine
+    ports:
+      -5432:5432
+    environment:
+      - POSTGRES_PASSWORD=nabatabassum
+      - POSTGRES_USER=iliyas01
+      - POSTGRES_DATABASE=iliyas01_database

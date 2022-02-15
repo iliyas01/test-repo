@@ -17,4 +17,17 @@
 #push to heroku container($heroku container:push web)
 #release your heroku container($heroku container:release web)
 #done!!
-#check your app deployed in heroku in browser((herokuappname).herokuapp.com)
+#check your app deployed in heroku in browser((herokuappname).herokuapp.com).
+
+
+
+
+
+
+
+
+
+
+
+
+
