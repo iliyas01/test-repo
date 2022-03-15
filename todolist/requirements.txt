@@ -1,0 +1,3 @@
+Django
+django-on-heroku
+gunicorn
