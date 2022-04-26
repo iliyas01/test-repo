@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- <script>
+    var rasa_x_state = '';
+    $(document).ready(function(){    
+        function get_status(callback){
+          console.log("get_status");
+          $.get("api/rasa_x", function(data, status){                      
+            console.log(JSON.stringify(data));
+            var state = data['state'];
+            if(state == 'stopped'){
+              $("#rasa_x_start").show();
+              $("#rasa_x_stop").hide();
+              $("#rasa_x_status").text("Rasa-X is stopped");
+            }
+            else if(state == 'stopping'){
+              $("#rasa_x_start").hide();
+              $("#rasa_x_stop").hide();
+              $("#rasa_x_status").text("Rasa-X is stopping");
+            }
+            else if(state == 'pending'|| state == 'starting'){
+              $("#rasa_x_start").hide();
+              $("#rasa_x_stop").hide();
+              $("#rasa_x_status").text("Rasa-X is starting");
+            }
+            else if(state == 'running'){
+              $("#rasa_x_start").hide();
+              $("#rasa_x_stop").show();
+              document.querySelector("#rasa_x_status").innerHTML='Rasa-X is running, go to <a href="http://54.80.39.85/">http://54.80.39.85/</a> for acessing the same.';
+         
+            }
+            rasa_x_state = state; 
+            console.log('rasa_x_state is %s',rasa_x_state);  
+            if(callback){
+              callback();
+            }
+          });              
+        }     
+        // function is_in_transition_state(){
+        //   return rasa_x_state == 'pending' || rasa_x_state == 'stopping' || rasa_x_state == 'starting';
+        // } 
+        function wait_status_update(){
+          console.log("wait_status_update");
+          if(is_in_transition_state()){
+            console.log("wait_status_update: starting");
+            var id = setInterval(check_status, 4000);//every 4 sec
+            function check_status() {
+              if (!is_in_transition_state()) {
+                clearInterval(id);
+                console.log("wait_status_update: stopping");
+                console.log('rasa_x_state is %s',rasa_x_state);
+              } else {
+                console.log("continue check status");
+                //get_status();
+              }
+            }
+          }else{
+            console.log("wait_status_update: NA");
+          }
+        }
+        function change_status(status){
+          console.log("change_status");
+          var settings = {
+            "async": true,
+            "url": "api/rasa_x",
+            "method": "POST",
+            "headers": {
+              "content-type": "application/json",
+              "cache-control": "no-cache"
+            },
+            "processData": false,
+          }
+          // if(status == "START"){
+          //   settings["data"]="{\"action\":\"START\"}"
+          // }else{
+          //   settings["data"]="{\"action\":\"STOP\"}"
+          // }
+          
+          $.ajax(settings).done(function (response) {
+            console.log(response);
+            //get_status(wait_status_update); 
+          });
+        }
+//the 88,89 method should not be called in local 
+        // $("#rasa_x_start").click(function(){
+        //   console.log("rasa_x_start click");
+        //   $("#rasa_x_start").hide();
+        //   change_status("START");
+        // });
+        // $("#rasa_x_stop").click(function(){
+        //   console.log("rasa_x_stop click");
+        //   $("#rasa_x_stop").hide();
+        //   change_status("STOP");
+        // });
+      
+       
+        //get_status(wait_status_update);                
+    });
+  </script> -->
+  <title>Ariel - Rasa-X</title>
+</head>
+<body>
+  <h2>Rasa-X Status</h2>
+
+  <button id="rasa_x_start" hidden>Start</button>
+  <button id="rasa_x_stop" hidden>Stop</button>
+  <p id="rasa_x_status"></p>
+</body>
+</html>
