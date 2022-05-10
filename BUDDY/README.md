@@ -1,0 +1,1 @@
+1. run project with following command (python3 manage.py runserver) in this folder project from terminal
